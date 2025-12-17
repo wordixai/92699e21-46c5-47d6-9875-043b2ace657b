@@ -7,11 +7,11 @@ const CANVAS_WIDTH = 400;
 const CANVAS_HEIGHT = 600;
 
 const BASE_CONFIG: GameConfig = {
-  gravity: 0.5,
-  jumpForce: -9,
-  pipeSpeed: 3,
-  pipeGap: 150,
-  pipeSpawnInterval: 1800,
+  gravity: 0.35,
+  jumpForce: -7,
+  pipeSpeed: 2.5,
+  pipeGap: 160,
+  pipeSpawnInterval: 2000,
   groundHeight: 80,
 };
 
