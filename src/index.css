@@ -2,17 +2,211 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-The @apply directive should not be used with the group utility class.
-*/
+/* Flappy Bird Game Design System - Cute Cartoon Style */
 
 @layer base {
   :root {
-   
+    /* Sky colors */
+    --sky-top: 196 100% 70%;
+    --sky-bottom: 199 100% 85%;
+
+    /* Bird colors */
+    --bird-body: 45 100% 60%;
+    --bird-belly: 45 100% 75%;
+    --bird-beak: 25 100% 55%;
+    --bird-eye: 0 0% 10%;
+    --bird-wing: 35 100% 50%;
+
+    /* Pipe colors */
+    --pipe-main: 120 60% 45%;
+    --pipe-light: 120 55% 55%;
+    --pipe-dark: 120 65% 35%;
+    --pipe-highlight: 120 50% 65%;
+
+    /* Ground colors */
+    --ground-top: 35 70% 55%;
+    --ground-main: 30 65% 45%;
+    --grass: 100 60% 50%;
+
+    /* UI colors */
+    --primary: 45 100% 55%;
+    --primary-foreground: 30 80% 25%;
+    --secondary: 120 50% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 350 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Background and foreground */
+    --background: 199 100% 85%;
+    --foreground: 220 30% 25%;
+
+    /* Card for UI panels */
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 25%;
+
+    /* Muted for subtle elements */
+    --muted: 45 30% 90%;
+    --muted-foreground: 220 20% 40%;
+
+    /* Border */
+    --border: 30 40% 70%;
+    --input: 30 40% 80%;
+    --ring: 45 100% 55%;
+
+    /* Destructive for game over */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 25%;
+
+    /* Radius */
+    --radius: 1rem;
+
+    /* Cloud color */
+    --cloud: 0 0% 100%;
+
+    /* Score colors */
+    --score-bg: 0 0% 0% / 0.3;
+    --score-text: 0 0% 100%;
+    --score-stroke: 30 80% 35%;
+
+    /* Medal colors */
+    --medal-gold: 45 100% 50%;
+    --medal-silver: 0 0% 75%;
+    --medal-bronze: 30 60% 45%;
   }
 
   .dark {
+    --sky-top: 220 50% 20%;
+    --sky-bottom: 220 40% 35%;
+    --background: 220 40% 25%;
+    --foreground: 45 30% 90%;
+    --card: 220 40% 20%;
+    --card-foreground: 45 30% 90%;
+  }
 
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Comic Sans MS', 'Chalkboard', 'Marker Felt', cursive, sans-serif;
+  }
+}
+
+@layer components {
+  /* Game button styles */
+  .game-btn {
+    @apply px-8 py-4 text-xl font-bold rounded-full
+           transition-all duration-200 transform
+           hover:scale-105 active:scale-95
+           shadow-lg hover:shadow-xl;
+    background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(35 100% 50%) 100%);
+    color: hsl(var(--primary-foreground));
+    border: 4px solid hsl(30 80% 40%);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+
+  .game-btn-secondary {
+    @apply px-6 py-3 text-lg font-bold rounded-full
+           transition-all duration-200 transform
+           hover:scale-105 active:scale-95
+           shadow-md hover:shadow-lg;
+    background: linear-gradient(180deg, hsl(var(--secondary)) 0%, hsl(120 60% 35%) 100%);
+    color: hsl(var(--secondary-foreground));
+    border: 3px solid hsl(120 65% 30%);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+
+  /* Game panel */
+  .game-panel {
+    @apply rounded-3xl p-6 shadow-2xl;
+    background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(45 40% 95%) 100%);
+    border: 4px solid hsl(var(--border));
+  }
+
+  /* Score display */
+  .score-display {
+    font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+    color: hsl(var(--score-text));
+    text-shadow:
+      3px 3px 0 hsl(var(--score-stroke)),
+      -1px -1px 0 hsl(var(--score-stroke)),
+      1px -1px 0 hsl(var(--score-stroke)),
+      -1px 1px 0 hsl(var(--score-stroke)),
+      1px 1px 0 hsl(var(--score-stroke));
+  }
+
+  /* Title text */
+  .game-title {
+    font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+    color: hsl(var(--primary));
+    text-shadow:
+      4px 4px 0 hsl(30 80% 35%),
+      -2px -2px 0 hsl(30 80% 35%),
+      2px -2px 0 hsl(30 80% 35%),
+      -2px 2px 0 hsl(30 80% 35%);
+  }
+}
+
+@layer utilities {
+  /* Floating animation for bird on start screen */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .animate-float {
+    animation: float 1.5s ease-in-out infinite;
+  }
+
+  /* Wing flap animation */
+  @keyframes flap {
+    0%, 100% { transform: rotate(0deg) scaleY(1); }
+    50% { transform: rotate(-20deg) scaleY(0.8); }
+  }
+
+  .animate-flap {
+    animation: flap 0.15s ease-in-out infinite;
+  }
+
+  /* Pulse for new high score */
+  @keyframes pulse-glow {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 10px hsl(var(--medal-gold)));
+    }
+    50% {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 20px hsl(var(--medal-gold)));
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 0.8s ease-in-out infinite;
+  }
+
+  /* Bounce in animation */
+  @keyframes bounce-in {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* Slide up animation */
+  @keyframes slide-up {
+    0% { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.4s ease-out;
   }
 }
