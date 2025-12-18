@@ -22,5 +22,31 @@
   "firstStartTime": "2025-12-17T15:11:48.716Z",
   "sonnet45MigrationComplete": true,
   "opus45MigrationComplete": true,
-  "thinkingMigrationComplete": true
+  "thinkingMigrationComplete": true,
+  "githubRepoPaths": {
+    "wordixai/92699e21-46c5-47d6-9875-043b2ace657b": [
+      "/app"
+    ]
+  },
+  "projects": {
+    "/app": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "FlappyBirdGame.tsx",
+        "Index.tsx",
+        "tailwind.config.ts",
+        ".claude.json",
+        "src/index.css"
+      ],
+      "exampleFilesGeneratedAt": 1766065481849
+    }
+  }
 }

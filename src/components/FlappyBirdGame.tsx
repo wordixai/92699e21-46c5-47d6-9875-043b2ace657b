@@ -7,11 +7,11 @@ const CANVAS_WIDTH = 400;
 const CANVAS_HEIGHT = 600;
 
 const BASE_CONFIG: GameConfig = {
-  gravity: 0.35,
-  jumpForce: -7,
-  pipeSpeed: 2.5,
-  pipeGap: 160,
-  pipeSpawnInterval: 2000,
+  gravity: 0.25,
+  jumpForce: -6,
+  pipeSpeed: 2,
+  pipeGap: 180,
+  pipeSpawnInterval: 2200,
   groundHeight: 80,
 };
 
@@ -299,8 +299,8 @@ export const FlappyBirdGame = () => {
 
   // Update difficulty
   const updateDifficulty = useCallback((currentScore: number) => {
-    const speedIncrease = Math.min(currentScore * 0.1, 3);
-    const gapDecrease = Math.min(currentScore * 2, 30);
+    const speedIncrease = Math.min(currentScore * 0.05, 1.5);
+    const gapDecrease = Math.min(currentScore * 1, 20);
 
     configRef.current.pipeSpeed = BASE_CONFIG.pipeSpeed + speedIncrease;
     configRef.current.pipeGap = BASE_CONFIG.pipeGap - gapDecrease;
